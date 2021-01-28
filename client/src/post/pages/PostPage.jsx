@@ -38,6 +38,11 @@ const PostPage = () => {
       {!isLoading && post && (
         <Helmet>
           <title>{`${post.title} - IK's Blog`}</title>
+          <meta name="og:title" content={`${post.title} - IK's Blog`} />
+          <meta
+            name="og:image"
+            content={`${process.env.REACT_APP_API_URL}/${post.cover}`}
+          />
         </Helmet>
       )}
       <div className="post-page">

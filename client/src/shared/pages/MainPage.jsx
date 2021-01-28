@@ -33,7 +33,12 @@ const MainPage = () => {
   return (
     <>
       <Helmet>
-        <title>{"IK's Blog - Main Page"}</title>
+        <title>"IK's Blog - Main Page"</title>
+        <meta name="og:title" content="IK's Blog - Main Page" />
+        <meta
+          name="og:image"
+          content={`${process.env.REACT_APP_API_URL}/uploads/images/ik-blog.png`}
+        />
       </Helmet>
       <div className="main-page">
         {isLoading && <LoadingSpinner asOverlay />}
