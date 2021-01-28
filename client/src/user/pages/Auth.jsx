@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Helmet } from "react-helmet";
-import { Redirect } from "react-router";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import {
