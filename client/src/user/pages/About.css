@@ -47,8 +47,12 @@
   color: var(--divider-color);
 }
 
-.about__feeds {
-  font-size: 16px;
+.about__content {
+  font-size: 1.2rem;
+}
+
+.about__content img {
+  filter: invert(1);
 }
 
 @media (max-width: 625px) {
