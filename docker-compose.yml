@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  bloggit:
+    build: .
+    env_file:
+      - client/.env
+      - ./.env
+    tty: true
+    stdin_open: true
+    ports:
+      - '5000:5000'
