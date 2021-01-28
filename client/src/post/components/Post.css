@@ -45,10 +45,6 @@
   color: var(--accent-color);
 }
 
-.post__tags span:not(:first-child) {
-  margin: 0 0.5rem;
-}
-
 .post__title {
   font-weight: 500;
   font-size: 1.7rem;

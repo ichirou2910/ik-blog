@@ -21,10 +21,6 @@
   color: var(--accent-color);
 }
 
-.post-page__tags span:not(:first-child) {
-  margin: 0 0.5rem;
-}
-
 .post-page__header h2 {
   font-size: 3.5rem;
   margin: 1.25rem 0;

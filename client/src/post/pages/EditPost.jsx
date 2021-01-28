@@ -38,6 +38,10 @@ const EditPost = () => {
         value: "",
         isValid: false,
       },
+      tags: {
+        value: "",
+        isValid: false,
+      },
       cover: {
         value: null,
         isValid: true,
@@ -55,6 +59,10 @@ const EditPost = () => {
         },
         content: {
           value: post ? post.content : "",
+          isValid: true,
+        },
+        tags: {
+          value: post ? post.tags.join(" ") : "",
           isValid: true,
         },
       },
@@ -97,6 +105,10 @@ const EditPost = () => {
         formData.append("content", formState.inputs.content.value);
         empty = false;
       }
+      if (formState.inputs.tags.value !== post.tags) {
+        formData.append("tags", formState.inputs.tags.value);
+        empty = false;
+      }
       if (formState.inputs.cover) {
         empty = false;
         formData.append("cover", formState.inputs.cover.value);
@@ -128,35 +140,13 @@ const EditPost = () => {
 
     try {
       sendRequest(
-        `${process.env.REACT_APP_API_URL}/blog/${slug}`,
+        `${process.env.REACT_APP_API_URL}/post/${slug}`,
         "DELETE",
         null,
         {
           Authorization: "Bearer " + auth.token,
         }
-      )
-        .then(() => {
-          sendRequest(
-            `${process.env.REACT_APP_API_URL}/comment/blog/${slug}`,
-            "DELETE",
-            null,
-            {
-              Authorization: "Bearer " + auth.token,
-            }
-          );
-        })
-        .then(() => {
-          sendRequest(
-            `${process.env.REACT_APP_API_URL}/activity/blog/${slug}`,
-            "DELETE",
-            null,
-            {
-              Authorization: "Bearer " + auth.token,
-            }
-          ).then(() => {
-            setDeleted(true);
-          });
-        });
+      );
     } catch (err) {
       console.log(err);
     }
@@ -211,6 +201,17 @@ const EditPost = () => {
               editValue={post.content}
               editValid={true}
               previewValue={formState.inputs.content.value}
+            />
+            <br />
+            <Input
+              id="tags"
+              element="input"
+              type="text"
+              label="Tags"
+              validators={[]}
+              onInput={inputHandler}
+              initialValue={post.tags.join(" ")}
+              initialValid={true}
             />
             <ImageUpload
               id="cover"

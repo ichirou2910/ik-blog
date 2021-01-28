@@ -110,6 +110,9 @@ const update = async (req, res, next) => {
   if (req.body.content) {
     post.content = req.body.content;
   }
+  if (req.body.tags) {
+    post.tags = req.body.tags.split(" ");
+  }
 
   post.date = req.body.date;
   post.displayDate = req.body.displayDate;
@@ -133,7 +136,7 @@ const update = async (req, res, next) => {
 const _delete = async (req, res, next) => {
   let post;
   try {
-    post = await Post.findById(req.params.post_id);
+    post = await Post.findOne({ slug: req.params.slug });
   } catch (err) {
     res.status(500).json({ message: "Fetch failed" });
     return next(err);
