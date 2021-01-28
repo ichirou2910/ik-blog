@@ -34,6 +34,10 @@ const NewPost = () => {
         value: "",
         isValid: false,
       },
+      tags: {
+        value: "",
+        isValid: true,
+      },
       cover: {
         value: null,
         isValid: true,
@@ -81,6 +85,7 @@ const NewPost = () => {
       formData.append("title", formState.inputs.title.value);
       formData.append("slug", slug);
       formData.append("content", formState.inputs.content.value);
+      formData.append("tags", formState.inputs.tags.value);
       formData.append("cover", formState.inputs.cover.value);
       formData.append("date", _date);
       formData.append("displayDate", _display);
@@ -129,6 +134,16 @@ const NewPost = () => {
           editValue=""
           editValid={false}
           previewValue={formState.inputs["content"].value}
+        />
+        <br />
+        <Input
+          id="tags"
+          element="input"
+          type="text"
+          label="Tags"
+          validators={[]}
+          onInput={inputHandler}
+          initialValid={true}
         />
         <ImageUpload
           id="cover"

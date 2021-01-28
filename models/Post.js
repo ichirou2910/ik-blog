@@ -21,10 +21,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  tags: {
-    type: Array,
-    required: false,
-  },
+  tags: { type: Array, required: false },
   date: { type: Date, required: true },
   displayDate: { type: String, required: true },
 });

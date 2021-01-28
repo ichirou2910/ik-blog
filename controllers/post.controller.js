@@ -30,17 +30,38 @@ const getBySlug = async (req, res, next) => {
   res.json(post);
 };
 
+const getByTag = async (req, res, next) => {
+  let post;
+  try {
+    post = await Post.find({ tags: req.params.tag });
+  } catch (err) {
+    res.status(500).json({ message: "Fetch failed" });
+    return next(err);
+  }
+  if (!post) {
+    res.status(404).json({ message: "Post not found" });
+    return;
+  }
+
+  res.json(post);
+};
+
 const create = async (req, res, next) => {
   if (req.body.user !== req.userData.name) {
     res.status(401).json({ message: "Authorization failed" });
     return;
   }
 
+  // console.log(req.body.tags);
+  const tags = req.body.tags.split(" ");
+  // console.log(tags);
+
   const post = new Post({
     user: req.body.user,
     userId: req.body.userId,
     title: req.body.title,
     slug: req.body.slug,
+    tags: tags,
     content: req.body.content,
     date: Date.parse(req.body.date),
     displayDate: req.body.displayDate,
@@ -136,6 +157,7 @@ const _delete = async (req, res, next) => {
 
 exports.getAll = getAll;
 exports.getBySlug = getBySlug;
+exports.getByTag = getByTag;
 exports.create = create;
 exports.update = update;
 exports.delete = _delete;

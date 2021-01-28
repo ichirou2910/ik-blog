@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Tag from "../components/Tag";
 import Card from "../../shared/components/UIElements/Card";
 
 import "./Post.css";
@@ -16,10 +17,11 @@ const Post = (props) => {
           />
         </Link>
         <div className="post__info">
-          {/* <p className="post__tags"> */}
-          {/*   <span>#vim</span> */}
-          {/*   <span>#vscode</span> */}
-          {/* </p> */}
+          <p className="post__tags">
+            {props.tags.map((item, index) => (
+              <Tag key={index} tag={item} />
+            ))}
+          </p>
           <h2 className="post__title">
             <Link to={`/post/${props.slug}`}>{props.title}</Link>
           </h2>

@@ -45,6 +45,7 @@ const PostList = (props) => {
               title={post.title}
               slug={post.slug}
               cover={post.cover}
+              tags={post.tags}
               content={post.content}
               date={post.displayDate}
             />
