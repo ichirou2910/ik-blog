@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Routes
 app.use("/api/post", require("./routes/post.route"));
+app.use("/api/user", require("./routes/user.route"));
 app.use("/api/image", require("./routes/image.route"));
 
 app.use((_req, res, _next) => {
