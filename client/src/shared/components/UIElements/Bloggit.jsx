@@ -8,7 +8,7 @@ const Bloggit = () => {
     <Link to="/create">
       <div className="bloggit">
         <img
-          src={`${process.env.REACT_APP_HOST_URL}/uploads/images/create-blog.png`}
+          src={`${process.env.REACT_APP_HOST_URL}/uploads/images/create-post.png`}
           alt="create blog icon"
         />
       </div>

@@ -44,7 +44,7 @@ const PostPage = () => {
         {error && <p>{error}</p>}
         {!isLoading && auth.isLoggedIn && post && (
           <StickyIcon
-            src={`${process.env.REACT_APP_HOST_URL}/uploads/images/edit-blog.png`}
+            src={`${process.env.REACT_APP_HOST_URL}/uploads/images/edit-post.png`}
             alt="edit profile icon"
             to={`/post/${slug}/edit`}
             text="Edit Blog"
@@ -55,10 +55,10 @@ const PostPage = () => {
             <article className="base-view">
               <header className="post-page__header">
                 <section className="post-page__meta">
-                  <p className="post-page__tags">
-                    <span>#vim</span>
-                    <span>#vscode</span>
-                  </p>
+                  {/* <p className="post-page__tags"> */}
+                  {/*   <span>#vim</span> */}
+                  {/*   <span>#vscode</span> */}
+                  {/* </p> */}
                   <p>Last modified: {post.displayDate}</p>
                 </section>
                 <h2>{post.title}</h2>

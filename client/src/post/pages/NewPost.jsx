@@ -42,63 +42,70 @@ const NewPost = () => {
     false
   );
 
+  const titleToSlug = (title) => {
+    title = title.replace(/^\s+|\s+$/g, ""); // trim
+    title = title.toLowerCase();
+
+    // remove accents, swap ñ for n, etc
+    var from =
+      "àáảãạăằắẳẵặâấầẫẩậäâèéẻẽẹêềếểễệëêìíỉĩịïîòóỏõọôồốổỗộơờớởỡợöôùúủũụưừứửữựüûñç·/_,:;";
+    var to =
+      "aaaaaaaaaaaaaaaaaaaeeeeeeeeeeeeeiiiiiiiooooooooooooooooooouuuuuuuuuuuuunc------";
+
+    for (var i = 0, l = from.length; i < l; i++) {
+      title = title.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+    }
+
+    title = title
+      .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+      .replace(/\s+/g, "-") // collapse whitespace and replace by -
+      .replace(/-+/g, "-"); // collapse dashes
+
+    return title;
+  };
+
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    let now = new Date();
-    let _date = now.toISOString();
-    let _display = now.toLocaleString("en-us", {
+    const now = new Date();
+    const _date = now.toISOString();
+    const _display = now.toLocaleString("en-us", {
       timeZone: "Asia/Ho_Chi_Minh",
     });
+    const slug = titleToSlug(formState.inputs.title.value);
 
     // Create new Blog
     try {
       const formData = new FormData();
       formData.append("user", auth.loginInfo.name);
       formData.append("title", formState.inputs.title.value);
+      formData.append("slug", slug);
       formData.append("content", formState.inputs.content.value);
       formData.append("cover", formState.inputs.cover.value);
       formData.append("date", _date);
       formData.append("displayDate", _display);
 
       sendRequest(
-        `${process.env.REACT_APP_API_URL}/blog/create`,
+        `${process.env.REACT_APP_API_URL}/post/create`,
         "POST",
         formData,
         {
           Authorization: "Bearer " + auth.token,
         }
-      )
-        .then((res) => {
-          return sendRequest(
-            `${process.env.REACT_APP_API_URL}/activity/create`,
-            "POST",
-            JSON.stringify({
-              user: auth.loginInfo.name,
-              blogId: res._id,
-              type: "post",
-              date: _date,
-            }),
-            {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + auth.token,
-            }
-          );
-        })
-        .then(() => setEdited(true));
+      ).then(() => setEdited(true));
     } catch (err) {
       console.log(err);
     }
   };
 
   if (edited) {
-    return <Redirect to={`/`} />;
+    return <Redirect to="/" />;
   }
 
   return (
     <>
       <Helmet>
-        <title>{"Bloggit - New Blog"}</title>
+        <title>New Blog - IK's Blog</title>
       </Helmet>
       <form className="blog-form base-view" onSubmit={submitHandler}>
         {isLoading && <LoadingSpinner asOverlay />}
