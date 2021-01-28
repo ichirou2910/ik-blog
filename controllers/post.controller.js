@@ -54,7 +54,7 @@ const create = async (req, res, next) => {
   try {
     await post.save();
   } catch (err) {
-    res.status(500).json({ message: "Blog creating failed" });
+    res.status(500).json({ message: "Post creating failed" });
     return next(err);
   }
 
@@ -64,7 +64,7 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
   let post;
   try {
-    post = await Post.findById(req.params.post_id);
+    post = await Post.findOne({ slug: req.params.slug });
   } catch (err) {
     res.status(500).json({ message: "Fetch failed" });
     return next(err);
@@ -78,7 +78,7 @@ const update = async (req, res, next) => {
   }
 
   if (!post) {
-    res.status(404).json({ message: "Blog not found" });
+    res.status(404).json({ message: "Post not found" });
     return;
   }
 
@@ -125,7 +125,7 @@ const _delete = async (req, res, next) => {
   }
 
   if (!post) {
-    res.status(404).json({ message: "Blog not found" });
+    res.status(404).json({ message: "Post not found" });
     return;
   }
 

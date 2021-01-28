@@ -11,7 +11,7 @@ import { useAuth } from "./shared/hooks/auth-hook";
 import Navbar from "./shared/components/Navigation/Navbar";
 import MainPage from "./shared/pages/MainPage";
 import NewPost from "./post/pages/NewPost";
-import EditBlog from "./post/pages/EditBlog";
+import EditPost from "./post/pages/EditPost";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 
 import "./App.css";
@@ -45,7 +45,7 @@ const App = () => {
           <Redirect to="/" />
         </Route>
         <Route path="/post/:slug/edit" exact>
-          <EditBlog />
+          <EditPost />
         </Route>
         <Route path="/post/:slug">
           <PostPage />

@@ -9,12 +9,13 @@ import "../../../post/pages/BlogForm.css";
 
 const blogPreviewStyle = {
   width: "100%",
-  border: "2px solid var(--dark-primary-color)",
+  border: "2px solid var(--accent-color)",
   margin: 0,
 };
 
 const previewContentStyle = {
   height: "70vh",
+  border: "2px solid var(--accent-color)",
   borderRadius: 0,
   overflowY: "scroll",
 };

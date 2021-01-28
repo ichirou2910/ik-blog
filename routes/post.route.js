@@ -11,6 +11,6 @@ router.use(checkAuth);
 
 router.post("/create", fileUpload.single("cover"), postController.create);
 router.delete("/:blog_id", postController.delete);
-router.post("/:blog_id", fileUpload.single("cover"), postController.update);
+router.post("/:slug", fileUpload.single("cover"), postController.update);
 
 module.exports = router;
