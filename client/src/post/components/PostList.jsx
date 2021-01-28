@@ -39,17 +39,15 @@ const PostList = (props) => {
       ) : (
         <>
           {posts.map((post, index) => (
-            <>
-              <Post
-                key={index}
-                user={post.user}
-                title={post.title}
-                slug={post.slug}
-                cover={post.cover}
-                content={post.content}
-                date={post.displayDate}
-              />
-            </>
+            <Post
+              key={index}
+              user={post.user}
+              title={post.title}
+              slug={post.slug}
+              cover={post.cover}
+              content={post.content}
+              date={post.displayDate}
+            />
           ))}
           {props.posts.length > itemsPerPage && (
             <div className="post-list__navi">
@@ -57,7 +55,7 @@ const PostList = (props) => {
                 <FaChevronLeft />
               </Button>
               <p>
-                Page {page + 1}/{Math.ceil(props.posts.length / 10)}
+                Page {page + 1}/{Math.ceil(props.posts.length / itemsPerPage)}
               </p>
               <Button onClick={pageInc}>
                 <FaChevronRight />

@@ -97,6 +97,7 @@ const App = () => {
             {routes}
           </Suspense>
         </main>
+        <footer>&copy; 2021. Ichirou Keita</footer>
       </Router>
     </AuthContext.Provider>
   );

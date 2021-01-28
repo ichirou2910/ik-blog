@@ -18,16 +18,14 @@ app.use("/uploads/images", express.static(path.join("uploads", "images")));
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Routes
-app.use("/api/user", require("./routes/user.route"));
 app.use("/api/post", require("./routes/post.route"));
-// app.use("/api/comment", require("./routes/comment.route"));
 app.use("/api/image", require("./routes/image.route"));
 
-app.use((req, res, next) => {
+app.use((_req, res, _next) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
-app.use((error, req, res, next) => {
+app.use((error, req, res, _next) => {
   if (req.file) {
     fs.unlink(req.file.path, (err) => {
       console.log(err);
@@ -37,7 +35,7 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An error occured!" });
 });
 
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
