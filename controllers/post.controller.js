@@ -40,6 +40,7 @@ const create = async (req, res, next) => {
     user: req.body.user,
     userId: req.body.userId,
     title: req.body.title,
+    slug: req.body.slug,
     content: req.body.content,
     date: Date.parse(req.body.date),
     displayDate: req.body.displayDate,
