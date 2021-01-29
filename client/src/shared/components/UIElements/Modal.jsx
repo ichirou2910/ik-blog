@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
-import Backdrop from "./Backdrop";
-
 import "./Modal.css";
 
 const ModalOverlay = (props) => {
@@ -30,11 +28,21 @@ const ModalOverlay = (props) => {
 const Modal = (props) => {
   return (
     <>
-      {props.show && <Backdrop onClick={props.onCancel} />}
+      {props.show && (
+        <div
+          className="modal__backdrop"
+          style={{ zIndex: props.index || 30 }}
+          onClick={() => {
+            console.log("Backdrop clicked");
+            props.onCancel();
+          }}
+        ></div>
+      )}
       <CSSTransition
         in={props.show}
         timeout={300}
         classNames="modal"
+        mountOnEnter
         unmountOnExit
       >
         <ModalOverlay {...props} />
