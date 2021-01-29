@@ -4,6 +4,7 @@
   z-index: 100;
   height: 100%;
   margin: 0 1rem;
+  font-size: 1.1rem;
 }
 
 .navigation button {
@@ -60,4 +61,10 @@
 
 .navigation__user {
   margin: 0 1rem;
+}
+
+@media (max-width: 625px) {
+  .navigation {
+    font-size: 1.1rem;
+  }
 }

@@ -1,27 +1,18 @@
 .about {
   margin-top: 5rem;
   color: var(--primary-text);
-  font-size: 120%;
 }
+
 .about img {
   filter: invert(1);
 }
 
-@media (max-width: 625px) {
-  .about__info p {
-    width: 75%;
-  }
+.about ul {
+  padding-left: 1.5rem;
 }
 
 @media (max-width: 480px) {
-  .about__info p {
-    width: 90%;
-  }
-}
-
-@media (max-width: 320px) {
-  .about__info h2 {
-    font-size: 1.5rem;
-    margin-top: 1rem;
+  .about {
+    font-size: 90%;
   }
 }
