@@ -89,6 +89,14 @@
   overflow-x: scroll;
 }
 
+.preview-content code {
+  font-family: "Ubuntu Mono";
+  font-size: 120%;
+  background-color: var(--darker-primary-color);
+  padding: 0.25rem;
+  border-radius: var(--border-radius);
+}
+
 @media (max-width: 480px) {
   .post-preview {
     border-radius: 0;
