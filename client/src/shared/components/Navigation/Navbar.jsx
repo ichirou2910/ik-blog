@@ -13,8 +13,22 @@ const Navbar = () => {
 
   return (
     <>
-      {showDrawer && <Backdrop onClick={() => setShowDrawer(true)} />}
-      <DropdownDrawer show={showDrawer} onClick={() => setShowDrawer(false)}>
+      {showDrawer && (
+        <Backdrop
+          index={31}
+          onClick={() => {
+            console.log("Menu hidden");
+            setShowDrawer(false);
+          }}
+        />
+      )}
+      <DropdownDrawer
+        show={showDrawer}
+        onClick={() => {
+          console.log("Drawer clicked");
+          setShowDrawer(false);
+        }}
+      >
         <nav className="navbar__drawer-nav">
           <Navigation />
         </nav>

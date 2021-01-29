@@ -6,9 +6,7 @@ import Search from "./Search";
 import "./Tags.css";
 
 const searchModalStyle = {
-  width: "70%",
   height: "calc(100% - 10rem)",
-  left: "15%",
   top: "5rem",
 };
 

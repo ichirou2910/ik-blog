@@ -4,10 +4,16 @@ import ReactDOM from "react-dom";
 import "./Backdrop.css";
 
 const Backdrop = (props) => {
-	return ReactDOM.createPortal(
-		<div className="backdrop" onClick={props.onClick}></div>,
-		document.getElementById("backdrop-hook")
-	);
+  return ReactDOM.createPortal(
+    <div
+      className="backdrop"
+      style={{ zIndex: props.index }}
+      onClick={props.onClick}
+    >
+      {props.index}
+    </div>,
+    document.getElementById("backdrop-hook")
+  );
 };
 
 export default Backdrop;

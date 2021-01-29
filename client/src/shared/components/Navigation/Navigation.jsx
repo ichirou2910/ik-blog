@@ -8,9 +8,7 @@ import Search from "../../../post/components/Search";
 import "./Navigation.css";
 
 const searchModalStyle = {
-  width: "70%",
   height: "calc(100% - 10rem)",
-  left: "15%",
   top: "5rem",
 };
 
@@ -25,11 +23,14 @@ const Navigation = () => {
         show={showSearch}
         style={searchModalStyle}
         header="Search"
-        onCancel={() => setShowSearch(false)}
+        onCancel={() => {
+          console.log("Search Modal closed");
+          setShowSearch(false);
+        }}
         contentClass="search__modal-content"
         footerClass="search__modal-actions"
       >
-        <Search exit={() => setShowSearch(false)} />
+        <Search />
       </Modal>
       <p
         style={{ color: "var(--primary-text)", cursor: "pointer" }}
