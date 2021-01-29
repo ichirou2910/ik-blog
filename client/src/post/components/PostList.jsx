@@ -33,23 +33,37 @@ const PostList = (props) => {
   };
 
   return (
-    <div className="post-list">
+    <div className={`post-list ${props.preview ? "post-list--preview" : ""}`}>
       {!props.posts || props.posts.length === 0 ? (
-        <p className="post-list__empty">No blog written yet</p>
+        <p className="post-list__empty">Empty</p>
       ) : (
         <>
-          {posts.map((post, index) => (
-            <Post
-              key={index}
-              user={post.user}
-              title={post.title}
-              slug={post.slug}
-              cover={post.cover}
-              tags={post.tags}
-              content={post.content}
-              date={post.displayDate}
-            />
-          ))}
+          {props.preview
+            ? posts.map((post, index) => (
+                <Post
+                  preview
+                  key={index}
+                  user={post.user}
+                  title={post.title}
+                  slug={post.slug}
+                  cover={post.cover}
+                  tags={post.tags}
+                  content={post.content}
+                  date={post.displayDate}
+                />
+              ))
+            : posts.map((post, index) => (
+                <Post
+                  key={index}
+                  user={post.user}
+                  title={post.title}
+                  slug={post.slug}
+                  cover={post.cover}
+                  tags={post.tags}
+                  content={post.content}
+                  date={post.displayDate}
+                />
+              ))}
           {props.posts.length > itemsPerPage && (
             <div className="post-list__navi">
               <Button onClick={pageDec}>

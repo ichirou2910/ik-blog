@@ -5,7 +5,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 
 import PostPreview from "../components/PostPreview";
-import Tag from "../components/Tag";
+import Tags from "../components/Tags";
 import StickyIcon from "../../shared/components/UIElements/StickyIcon";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 
@@ -61,11 +61,7 @@ const PostPage = () => {
             <article className="base-view">
               <header className="post-page__header">
                 <section className="post-page__meta">
-                  <p className="post-page__tags">
-                    {post.tags.map((item, index) => (
-                      <Tag key={index} tag={item} />
-                    ))}
-                  </p>
+                  {!post.preview && <Tags tags={post.tags} />}
                   <p>Last modified: {post.displayDate}</p>
                 </section>
                 <h2>{post.title}</h2>

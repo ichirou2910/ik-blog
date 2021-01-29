@@ -17,6 +17,7 @@
 .post__image {
   flex: 1 1 300px;
   height: 166px;
+  margin-right: 0.3rem;
 }
 
 .post__image img {
@@ -27,7 +28,6 @@
 
 .post__info {
   width: 70%;
-  margin-left: 0.3rem;
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
@@ -38,18 +38,11 @@
   font-size: 90%;
 }
 
-.post__tags {
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  color: var(--accent-color);
-}
-
 .post__title {
   font-weight: 500;
   font-size: 1.7rem;
   color: var(--primary-text);
-  margin-top: 0.5rem;
+  margin: 0.5rem 0;
   flex-grow: 1;
   line-height: 1.15;
   text-rendering: optimizeLegibility;

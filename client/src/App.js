@@ -20,7 +20,6 @@ const Auth = React.lazy(() => import("./user/pages/Auth"));
 const About = React.lazy(() => import("./user/pages/About"));
 const EditAbout = React.lazy(() => import("./user/pages/EditAbout"));
 const PostPage = React.lazy(() => import("./post/pages/PostPage"));
-const SearchPage = React.lazy(() => import("./shared/pages/SearchPage"));
 
 const App = () => {
   const { token, login, logout, loginInfo, setInfo } = useAuth();
@@ -45,9 +44,6 @@ const App = () => {
         <Route path="/admin">
           <Redirect to="/" />
         </Route>
-        <Route path="/search/tag/:tag" exact>
-          <SearchPage />
-        </Route>
         <Route path="/post/:slug/edit" exact>
           <EditPost />
         </Route>
@@ -68,9 +64,6 @@ const App = () => {
         </Route>
         <Route path="/about" exact>
           <About />
-        </Route>
-        <Route path="/search/tag/:tag" exact>
-          <SearchPage />
         </Route>
         <Route path="/post/:slug">
           <PostPage />

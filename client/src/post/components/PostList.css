@@ -7,6 +7,10 @@
   color: var(--primary-text);
 }
 
+.post-list--preview {
+  margin: 0 auto;
+}
+
 .post-list__empty {
   text-align: center;
   font-size: 120%;

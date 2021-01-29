@@ -1,4 +1,6 @@
 :root {
+  --bg: #242526;
+  --bg-accent: #484a4d;
   --accent-color: #03a9f4;
 
   --primary-color: #302e38;
@@ -66,27 +68,6 @@ a {
 
 a:visited {
   color: var(--accent-color);
-}
-
-.slide-in-top-enter {
-  transform: translateY(-100%);
-}
-
-.slide-in-top-enter-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: all 200ms;
-}
-
-.slide-in-top-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.slide-in-top-exit-active {
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: all 200ms;
 }
 
 ::-webkit-scrollbar {

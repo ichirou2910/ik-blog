@@ -146,7 +146,7 @@ const EditPost = () => {
         {
           Authorization: "Bearer " + auth.token,
         }
-      );
+      ).then(() => setDeleted(true));
     } catch (err) {
       console.log(err);
     }

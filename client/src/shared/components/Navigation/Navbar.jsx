@@ -9,20 +9,12 @@ import Backdrop from "../UIElements/Backdrop";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-
-  const openDrawerHandler = () => {
-    setDrawerIsOpen(true);
-  };
-
-  const closeDrawerHandler = () => {
-    setDrawerIsOpen(false);
-  };
+  const [showDrawer, setShowDrawer] = useState(false);
 
   return (
     <>
-      {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
-      <DropdownDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
+      {showDrawer && <Backdrop onClick={() => setShowDrawer(true)} />}
+      <DropdownDrawer show={showDrawer} onClick={() => setShowDrawer(false)}>
         <nav className="navbar__drawer-nav">
           <Navigation />
         </nav>
@@ -33,7 +25,10 @@ const Navbar = () => {
             <h3 style={{ marginLeft: "1rem" }}>IK's Blog</h3>
           </Link>
         </div>
-        <button className="navbar__menu-btn" onClick={openDrawerHandler}>
+        <button
+          className="navbar__menu-btn"
+          onClick={() => setShowDrawer(true)}
+        >
           <span />
           <span />
           <span />

@@ -16,11 +16,6 @@
   font-weight: 300;
 }
 
-.post-page__tags {
-  text-transform: uppercase;
-  color: var(--accent-color);
-}
-
 .post-page__header h2 {
   font-size: 3.5rem;
   margin: 1.25rem 0;
