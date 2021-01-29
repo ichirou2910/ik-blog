@@ -4,8 +4,17 @@ const Post = db.Post;
 
 const getAll = async (req, res, next) => {
   let posts;
+  let filter = {};
+
+  const query = req.query.q;
+
+  if (query)
+    if (query.startsWith("#", 0))
+      filter["tags"] = query.split(" ")[0].substr(1);
+    else filter["title"] = { $regex: query, $options: "i" };
+
   try {
-    posts = await Post.find().sort({ date: -1 });
+    posts = await Post.find(filter).sort({ date: -1 });
   } catch (err) {
     res.status(500).json({ message: "Fetch failed" });
     return next(err);

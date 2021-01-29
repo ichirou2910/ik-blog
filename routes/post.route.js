@@ -4,7 +4,7 @@ const fileUpload = require("../middleware/file-upload");
 const postController = require("../controllers/post.controller");
 const checkAuth = require("../middleware/check-auth");
 
-router.get("/", postController.getAll);
+router.get("/search", postController.getAll);
 router.get("/:slug", postController.getBySlug);
 router.get("/tag/:tag", postController.getByTag);
 

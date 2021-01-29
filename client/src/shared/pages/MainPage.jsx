@@ -20,7 +20,7 @@ const MainPage = () => {
     const fetchInfo = async () => {
       try {
         const blogData = await sendRequest(
-          `${process.env.REACT_APP_API_URL}/post`
+          `${process.env.REACT_APP_API_URL}/post/search`
         );
         setPostList(blogData);
       } catch (err) {
@@ -33,7 +33,7 @@ const MainPage = () => {
   return (
     <>
       <Helmet>
-        <title>"IK's Blog - Main Page"</title>
+        <title>IK's Blog - Main Page</title>
         <meta name="og:title" content="IK's Blog - Main Page" />
         <meta
           name="og:image"
