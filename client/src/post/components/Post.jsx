@@ -7,7 +7,7 @@ import "./Post.css";
 
 const Post = (props) => {
   return (
-    <article className={`${!props.preview && "post"}`}>
+    <article className={`${!props.preview ? "post" : "post--preview"}`}>
       <Card className="post__card card--lighter">
         {!props.preview && (
           <a className="post__image" href={`/post/${props.slug}`}>

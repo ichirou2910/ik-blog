@@ -12,7 +12,6 @@ const Menu = () => {
   const auth = useContext(AuthContext);
 
   const toggleTheme = () => {
-    console.log("Theme switched");
     if (theme === "dark") setTheme("light");
     if (theme === "light") setTheme("dark");
   };
