@@ -1,9 +1,9 @@
-.theme-switcher {
+.menu-icon {
   position: fixed;
   width: 60px;
   height: 60px;
   bottom: 40px;
-  left: 10px;
+  right: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -12,14 +12,12 @@
   z-index: 15;
 }
 
-.theme-switcher__icon {
+.menu-icon__icon {
   box-sizing: content-box;
   --button-size: calc(var(--nav-height) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: var(--bg-card);
   border-radius: 50%;
-  padding: 5px;
   margin: 2px;
   display: flex;
   align-items: center;
@@ -27,7 +25,7 @@
   transition: filter 300ms;
 }
 
-.theme-switcher__icon svg {
+.menu-icon svg {
   fill: var(--text);
   width: 32px;
   height: 32px;
