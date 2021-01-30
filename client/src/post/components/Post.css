@@ -1,5 +1,6 @@
 .post {
-  margin: 0 20px 50px;
+  padding: 0 20px 50px;
+  background-color: var(--bg);
 }
 
 .post a {
@@ -41,7 +42,7 @@
 .post__title {
   font-weight: 500;
   font-size: 1.7rem;
-  color: var(--primary-text);
+  color: var(--text);
   margin: 0.5rem 0;
   flex-grow: 1;
   line-height: 1.15;
@@ -49,7 +50,7 @@
 }
 
 .post__title a {
-  color: var(--primary-text);
+  color: var(--text);
 }
 
 @media (max-width: 768px) {

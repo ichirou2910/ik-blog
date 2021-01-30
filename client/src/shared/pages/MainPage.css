@@ -1,7 +1,3 @@
-.main-page {
-  margin: 4rem 0;
-}
-
 @media (max-width: 768px) {
   .main-page__feeds {
     flex-direction: column;

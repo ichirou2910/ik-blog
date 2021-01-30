@@ -4,7 +4,7 @@
   justify-content: space-around;
   max-width: 850px;
   margin: calc(4rem + 40px) auto 0 auto;
-  color: var(--primary-text);
+  color: var(--text);
 }
 
 .post-list--preview {
@@ -17,7 +17,6 @@
 }
 
 .post-list__navi {
-  /* background-color: var(--lighter-primary-color); */
   display: flex;
   align-self: center;
 }

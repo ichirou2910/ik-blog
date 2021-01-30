@@ -6,13 +6,16 @@ import {
   Switch,
 } from "react-router-dom";
 import { AuthContext } from "./shared/context/auth-context";
+import { ThemeContext } from "./shared/context/theme-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+import { useTheme } from "./shared/hooks/theme-hook";
 
 import Navbar from "./shared/components/Navigation/Navbar";
 import MainPage from "./shared/pages/MainPage";
 import NewPost from "./post/pages/NewPost";
 import EditPost from "./post/pages/EditPost";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
+import ThemeSwitcher from "./shared/components/UIElements/ThemeSwitcher";
 
 import "./App.css";
 
@@ -23,6 +26,7 @@ const PostPage = React.lazy(() => import("./post/pages/PostPage"));
 
 const App = () => {
   const { token, login, logout, loginInfo, setInfo } = useAuth();
+  const { theme, switchTheme } = useTheme();
 
   let routes;
 
@@ -84,21 +88,32 @@ const App = () => {
         setInfo: setInfo,
       }}
     >
-      <Router>
-        <Navbar />
-        <main>
-          <Suspense
-            fallback={
-              <div>
-                <LoadingSpinner />
-              </div>
-            }
-          >
-            {routes}
-          </Suspense>
-        </main>
-        <footer>&copy; 2021. Ichirou Keita</footer>
-      </Router>
+      <ThemeContext.Provider
+        value={{
+          theme: theme,
+          setTheme: switchTheme,
+        }}
+      >
+        <Router>
+          <div className={theme}>
+            {/* <div className="light"> */}
+            <Navbar />
+            <ThemeSwitcher />
+            <main>
+              <Suspense
+                fallback={
+                  <div>
+                    <LoadingSpinner />
+                  </div>
+                }
+              >
+                {routes}
+              </Suspense>
+            </main>
+            <footer>&copy; 2021. Ichirou Keita</footer>
+          </div>
+        </Router>
+      </ThemeContext.Provider>
     </AuthContext.Provider>
   );
 };

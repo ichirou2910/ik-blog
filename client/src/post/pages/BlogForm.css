@@ -1,20 +1,21 @@
 .blog-form {
-	margin-top: 5rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--bg);
 }
 
 .blog-form__title {
-	font-family: inherit;
+  font-family: inherit;
 }
 
 .blog-form__submit {
-	width: 100%;
-	margin-top: 0.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .blog-form__submit button {
-	width: 100%;
-	margin-bottom: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }

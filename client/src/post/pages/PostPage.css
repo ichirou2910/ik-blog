@@ -1,6 +1,6 @@
 .post-page {
   margin-top: 4rem;
-  background-color: var(--primary-bg-color);
+  background-color: var(--bg-post);
 }
 
 .post-page__header {
@@ -8,7 +8,7 @@
   margin: 1rem auto;
   padding: 1rem 0;
   /* background-color: rgba(0, 0, 0, 0.5); */
-  color: var(--primary-text);
+  color: var(--text);
   /* box-shadow: 0 0 6px #ac1b7388; */
 }
 
@@ -34,8 +34,7 @@
 }
 
 .post-page__content {
-  margin: 1rem auto;
-  padding: 60px 100px 0;
+  padding: 60px 60px 40px 60px;
   font-size: 1.2rem;
   line-height: 1.6em;
 }
@@ -83,7 +82,7 @@
   }
 
   .post-page__content {
-    padding: 0;
+    padding: 0.5rem;
     font-size: 1rem;
   }
 }
