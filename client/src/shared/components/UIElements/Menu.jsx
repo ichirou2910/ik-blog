@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../../context/theme-context";
 import { AuthContext } from "../../context/auth-context";
 
@@ -19,16 +20,18 @@ const Menu = () => {
   return (
     <>
       <div className={`menu-icon ${theme}`}>
-        <a className="menu-icon__icon" onClick={toggleTheme}>
+        <div className="menu-icon__icon" onClick={toggleTheme}>
           <ThemeIcon />
-        </a>
+        </div>
       </div>
       {auth.isLoggedIn && (
-        <div style={{ bottom: "120px" }} className={`menu-icon ${theme}`}>
-          <a href="/create" className="menu-icon__icon">
-            <PlusIcon />
-          </a>
-        </div>
+        <Link to="/create">
+          <div style={{ bottom: "120px" }} className={`menu-icon ${theme}`}>
+            <div className="menu-icon__icon">
+              <PlusIcon />
+            </div>
+          </div>
+        </Link>
       )}
     </>
   );
