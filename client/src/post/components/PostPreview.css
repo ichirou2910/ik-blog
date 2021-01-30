@@ -19,7 +19,8 @@
   font-size: 90%;
 }
 
-.preview-content ul {
+.preview-content ul,
+.preview-content ol {
   padding-left: 1.5rem;
 }
 
@@ -84,8 +85,9 @@
 
 .preview-content pre {
   padding: 0.5rem;
-  border-left: 0.25rem solid black;
-  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.3);
+  background-color: var(--darker-primary-color);
+  /* border: var(--border); */
+  border-radius: var(--border-radius);
   overflow-x: scroll;
 }
 
@@ -95,6 +97,11 @@
   background-color: var(--darker-primary-color);
   padding: 0.25rem;
   border-radius: var(--border-radius);
+}
+
+.preview-content pre > code {
+  background-color: transparent;
+  border-radius: 0;
 }
 
 @media (max-width: 480px) {
