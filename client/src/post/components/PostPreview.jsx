@@ -2,7 +2,8 @@ import React from "react";
 import hljs from "highlight.js";
 
 import "./PostPreview.css";
-import "highlight.js/styles/atom-one-dark-reasonable.css";
+import "./CodeHighlight.css";
+// import "highlight.js/styles/atom-one-dark-reasonable.css";
 
 const marked = require("marked");
 marked.setOptions({

@@ -12,17 +12,15 @@
   background: none;
   outline: none;
   font: inherit;
-  color: white;
+  color: var(--text);
 }
 
 .tab-menu > button.focus {
-  /* border-top: 2px solid #007bef; */
   background-color: var(--accent-color);
-  color: white;
+  color: var(--text);
   pointer-events: none;
 }
 
 .tab-menu > button:hover {
-  color: var(--lighter-secondary-color);
-  /* border-top: 2px solid var(--dark-primary-color); */
+  color: var(--text-invert);
 }

@@ -5,14 +5,18 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+import { ThemeContext } from "./shared/context/theme-context";
+import { useTheme } from "./shared/hooks/theme-hook";
 
 import Navbar from "./shared/components/Navigation/Navbar";
 import MainPage from "./shared/pages/MainPage";
 import NewPost from "./post/pages/NewPost";
 import EditPost from "./post/pages/EditPost";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
+import Menu from "./shared/components/UIElements/Menu";
 
 import "./App.css";
 
@@ -23,6 +27,7 @@ const PostPage = React.lazy(() => import("./post/pages/PostPage"));
 
 const App = () => {
   const { token, login, logout, loginInfo, setInfo } = useAuth();
+  const { theme, switchTheme } = useTheme();
 
   let routes;
 
@@ -84,21 +89,39 @@ const App = () => {
         setInfo: setInfo,
       }}
     >
-      <Router>
-        <Navbar />
-        <main>
-          <Suspense
-            fallback={
-              <div>
-                <LoadingSpinner />
-              </div>
-            }
-          >
-            {routes}
-          </Suspense>
-        </main>
-        <footer>&copy; 2021. Ichirou Keita</footer>
-      </Router>
+      <ThemeContext.Provider
+        value={{
+          theme: theme,
+          setTheme: switchTheme,
+        }}
+      >
+        <Router>
+          <Helmet>
+            <style>{`
+            body {background-color: ${
+              theme === "dark" ? "var(--gray7)" : "var(--gray0)"
+            }}
+            footer {color: ${
+              theme === "dark" ? "var(--white)" : "var(--black)"
+            }}
+            `}</style>
+          </Helmet>
+          <Navbar />
+          <Menu />
+          <main className={theme}>
+            <Suspense
+              fallback={
+                <div>
+                  <LoadingSpinner />
+                </div>
+              }
+            >
+              {routes}
+            </Suspense>
+          </main>
+          <footer>&copy; 2021. Ichirou Keita</footer>
+        </Router>
+      </ThemeContext.Provider>
     </AuthContext.Provider>
   );
 };

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import { ThemeContext } from "../../context/theme-context";
 
 import "./Modal.css";
 
 const ModalOverlay = (props) => {
+  const { theme } = useContext(ThemeContext);
+
   const content = (
-    <div className={`modal ${props.className}`} style={props.style}>
+    <div className={`modal ${theme} ${props.className}`} style={props.style}>
       <header className={`modal__header ${props.headerClass}`}>
         <span className="modal__close" onClick={props.onCancel}></span>
         <h2>{props.header}</h2>

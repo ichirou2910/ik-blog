@@ -4,17 +4,6 @@
   border-radius: 6px;
   padding: 1rem;
   overflow: hidden;
-  color: var(--primary-text);
-}
-
-.card--light {
-  background-color: var(--light-primary-color);
-}
-
-.card--lighter {
-  background-color: var(--lighter-primary-color);
-}
-
-.card--active {
-  background-color: var(--accent-color);
+  color: var(--text);
+  background-color: var(--bg-card);
 }

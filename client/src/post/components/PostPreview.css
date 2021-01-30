@@ -1,5 +1,5 @@
 .post-preview {
-  color: var(--primary-text);
+  color: var(--text);
   overflow-x: auto;
 }
 
@@ -13,8 +13,7 @@
   width: 100%;
   border-radius: 0.3rem;
   padding: 1rem 1.5rem;
-  background-color: var(--lighter-primary-color);
-  /* box-shadow: 0 2.5px 6px rgba(0, 0, 0, 0.5); */
+  background-color: var(--bg-preview);
   line-height: 1.5;
   font-size: 90%;
 }
@@ -25,6 +24,7 @@
 }
 
 .preview-content h1 {
+  color: var(--white);
   background-color: #273c75;
   padding: 0.5rem 0 0.5rem 1.5rem;
   margin-left: -1.5rem;
@@ -40,7 +40,7 @@
 .preview-content img {
   display: block;
   padding: 0.25rem;
-  border: 1px solid var(--light-secondary-color);
+  border: 1px solid var(--blue);
   border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
@@ -72,7 +72,7 @@
 
 .preview-content td,
 .preview-content th {
-  border: 1px solid var(--divider-color);
+  border: 1px solid var(--text);
   padding: 8px;
 }
 
@@ -80,13 +80,12 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: var(--light-secondary-color);
+  background-color: var(--bg-nav);
 }
 
 .preview-content pre {
   padding: 0.5rem;
-  background-color: var(--darker-primary-color);
-  /* border: var(--border); */
+  background-color: var(--bg);
   border-radius: var(--border-radius);
   overflow-x: scroll;
 }
@@ -94,7 +93,7 @@
 .preview-content code {
   font-family: "Ubuntu Mono";
   font-size: 110%;
-  background-color: var(--darker-primary-color);
+  background-color: var(--bg);
   padding: 0.25rem;
   border-radius: var(--border-radius);
 }

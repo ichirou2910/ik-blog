@@ -33,7 +33,7 @@ const Navigation = () => {
         <Search />
       </Modal>
       <p
-        style={{ color: "var(--primary-text)", cursor: "pointer" }}
+        style={{ color: "var(--text)", cursor: "pointer" }}
         onClick={() => setShowSearch(true)}
       >
         SEARCH

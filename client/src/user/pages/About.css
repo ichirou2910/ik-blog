@@ -1,9 +1,9 @@
 .about {
   margin-top: 5rem;
-  color: var(--primary-text);
+  color: var(--text);
 }
 
-.about img {
+.dark .about img {
   filter: invert(1);
 }
 

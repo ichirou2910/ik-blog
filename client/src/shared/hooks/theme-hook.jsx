@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export const useTheme = () => {
   const [theme, setTheme] = useState("dark");
@@ -9,6 +9,13 @@ export const useTheme = () => {
       localStorage.setItem("theme", theme);
     }
   }, []);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("theme");
+    if (storedData) {
+      switchTheme(storedData);
+    }
+  }, [switchTheme]);
 
   return { theme, switchTheme };
 };
