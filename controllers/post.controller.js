@@ -8,6 +8,10 @@ const getAll = async (req, res, next) => {
 
   const query = req.query.q;
 
+  if (!req.userData.name) {
+    filter["draft"] = false;
+  }
+
   if (query)
     if (query.startsWith("#", 0))
       filter["tags"] = query.split(" ")[0].substr(1);
@@ -61,11 +65,10 @@ const create = async (req, res, next) => {
     return;
   }
 
-  // console.log(req.body.tags);
   const tags = req.body.tags.split(" ");
-  // console.log(tags);
 
   const post = new Post({
+    draft: req.body.draft,
     user: req.body.user,
     userId: req.body.userId,
     title: req.body.title,
@@ -81,6 +84,8 @@ const create = async (req, res, next) => {
   } else {
     post.cover = "uploads/images/post-no-image.png";
   }
+
+  console.log(post);
 
   try {
     await post.save();
@@ -113,6 +118,9 @@ const update = async (req, res, next) => {
     return;
   }
 
+  if (req.body.draft !== undefined) {
+    post.draft = req.body.draft;
+  }
   if (req.body.title) {
     post.title = req.body.title;
   }

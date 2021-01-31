@@ -37,7 +37,9 @@ const PostPage = () => {
     <>
       {!isLoading && post && (
         <Helmet>
-          <title>{`${post.title} - IK's Blog`}</title>
+          <title>{`${post.draft ? "(Draft)" : ""} ${
+            post.title
+          } - IK's Blog`}</title>
           <meta name="og:title" content={`${post.title} - IK's Blog`} />
           <meta
             name="og:image"
@@ -62,7 +64,13 @@ const PostPage = () => {
               <header className="post-page__header">
                 <section className="post-page__meta">
                   {!post.preview && <Tags tags={post.tags} />}
-                  <p>Last modified: {post.displayDate}</p>
+                  {post.draft ? (
+                    <h3>
+                      <strong>(Draft Preview)</strong>
+                    </h3>
+                  ) : (
+                    <p>Last modified: {post.displayDate}</p>
+                  )}
                 </section>
                 <h2>{post.title}</h2>
               </header>

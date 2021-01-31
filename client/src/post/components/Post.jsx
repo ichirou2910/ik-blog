@@ -5,25 +5,32 @@ import Card from "../../shared/components/UIElements/Card";
 
 import "./Post.css";
 
-const Post = (props) => {
+const Post = ({ post }) => {
   return (
-    <article className={`${!props.preview ? "post" : "post--preview"}`}>
+    <article className={`${!post.preview ? "post" : "post--preview"}`}>
+      {post.draft && (
+        <>
+          <div className="post__draft">
+            <span>Draft</span>
+          </div>
+        </>
+      )}
       <Card className="post__card card--lighter">
-        {!props.preview && (
-          <a className="post__image" href={`/post/${props.slug}`}>
+        {!post.preview && (
+          <a className="post__image" href={`/post/${post.slug}`}>
             <img
-              src={`${process.env.REACT_APP_HOST_URL}/${props.cover}`}
-              alt={props.title}
+              src={`${process.env.REACT_APP_HOST_URL}/${post.cover}`}
+              alt={post.title}
             />
           </a>
         )}
         <div className="post__info">
-          {!props.preview && <Tags tags={props.tags} />}
+          {!post.preview && <Tags tags={post.tags} />}
           <h2 className="post__title">
-            <a href={`/post/${props.slug}`}>{props.title}</a>
+            <a href={`/post/${post.slug}`}>{post.title}</a>
           </h2>
           <p className="post__date">
-            {props.date.substr(0, props.date.indexOf(","))}
+            {post.date.substr(0, post.date.indexOf(","))}
           </p>
         </div>
       </Card>

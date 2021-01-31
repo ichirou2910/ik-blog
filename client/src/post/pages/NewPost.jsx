@@ -20,6 +20,7 @@ import "./BlogForm.css";
 
 const NewPost = () => {
   const [edited, setEdited] = useState(false);
+  const [isDraft, setIsDraft] = useState(false);
   const { isLoading, error, sendRequest } = useHttpClient();
 
   const auth = useContext(AuthContext);
@@ -78,9 +79,12 @@ const NewPost = () => {
     });
     const slug = titleToSlug(formState.inputs.title.value);
 
+    console.log(isDraft);
+
     // Create new Blog
     try {
       const formData = new FormData();
+      formData.append("draft", isDraft);
       formData.append("user", auth.loginInfo.name);
       formData.append("title", formState.inputs.title.value);
       formData.append("slug", slug);
@@ -151,8 +155,15 @@ const NewPost = () => {
           onInput={inputHandler}
         />
         <div className="blog-form__submit">
-          <Button type="submit" disabled={!formState.isValid}>
+          <Button
+            type="submit"
+            onClick={() => setIsDraft(false)}
+            disabled={!formState.isValid}
+          >
             CREATE
+          </Button>
+          <Button type="submit" onClick={() => setIsDraft(true)}>
+            SAVE
           </Button>
         </div>
       </form>

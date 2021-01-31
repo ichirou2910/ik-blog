@@ -39,31 +39,8 @@ const PostList = (props) => {
       ) : (
         <>
           {props.preview
-            ? posts.map((post, index) => (
-                <Post
-                  preview
-                  key={index}
-                  user={post.user}
-                  title={post.title}
-                  slug={post.slug}
-                  cover={post.cover}
-                  tags={post.tags}
-                  content={post.content}
-                  date={post.displayDate}
-                />
-              ))
-            : posts.map((post, index) => (
-                <Post
-                  key={index}
-                  user={post.user}
-                  title={post.title}
-                  slug={post.slug}
-                  cover={post.cover}
-                  tags={post.tags}
-                  content={post.content}
-                  date={post.displayDate}
-                />
-              ))}
+            ? posts.map((post, index) => <Post preview post={post} />)
+            : posts.map((post, index) => <Post key={index} post={post} />)}
           {props.posts.length > itemsPerPage && (
             <div className="post-list__navi">
               <Button onClick={pageDec}>

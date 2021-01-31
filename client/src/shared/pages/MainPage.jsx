@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { AuthContext } from "../context/auth-context";
 
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 
@@ -10,21 +11,35 @@ import PostList from "../../post/components/PostList";
 const MainPage = () => {
   const [postList, setPostList] = useState();
 
+  const auth = useContext(AuthContext);
+
   const { isLoading, error, sendRequest } = useHttpClient();
+
+  const getAuth = useCallback(() => {
+    if (auth.token) {
+      return {
+        Authorization: "Bearer " + auth.token,
+      };
+    }
+    return {};
+  }, [auth.token]);
 
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const blogData = await sendRequest(
-          `${process.env.REACT_APP_API_URL}/post/search`
+        const postData = await sendRequest(
+          `${process.env.REACT_APP_API_URL}/post/`,
+          "GET",
+          null,
+          getAuth()
         );
-        setPostList(blogData);
+        setPostList(postData);
       } catch (err) {
         console.log(err);
       }
     };
     fetchInfo();
-  }, [sendRequest]);
+  }, [sendRequest, getAuth]);
 
   return (
     <>

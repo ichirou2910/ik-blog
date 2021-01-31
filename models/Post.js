@@ -5,17 +5,21 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  draft: {
+    type: Boolean,
+    required: true,
+  },
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   slug: {
     type: String,
-    required: true,
+    required: false,
   },
   content: {
     type: String,
-    required: true,
+    required: false,
   },
   cover: {
     type: String,

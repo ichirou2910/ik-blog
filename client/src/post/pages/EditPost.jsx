@@ -19,6 +19,7 @@ import "./BlogForm.css";
 
 const EditPost = () => {
   const [post, setPost] = useState();
+  const [isDraft, setIsDraft] = useState(false);
   const [edited, setEdited] = useState(false);
   const [deleted, setDeleted] = useState(false);
 
@@ -55,18 +56,18 @@ const EditPost = () => {
       {
         title: {
           value: post ? post.title : "",
-          isValid: true,
+          isValid: post && post.title,
         },
         content: {
           value: post ? post.content : "",
-          isValid: true,
+          isValid: post && post.content,
         },
         tags: {
           value: post ? post.tags.join(" ") : "",
-          isValid: true,
+          isValid: post && post.tags,
         },
       },
-      true
+      post && post.title && post.content && post.tags
     );
   }, [setFormData, post]);
 
@@ -77,6 +78,7 @@ const EditPost = () => {
           `${process.env.REACT_APP_API_URL}/post/${slug}`
         );
         setPost(postData);
+        setIsDraft(postData.draft);
       } catch (err) {
         console.log(err);
       }
@@ -97,6 +99,10 @@ const EditPost = () => {
       let empty = true; // Whether there is change in form value
 
       const formData = new FormData();
+      if (isDraft === false) {
+        formData.append("draft", isDraft);
+        empty = false;
+      }
       if (formState.inputs.title.value !== post.title) {
         formData.append("title", formState.inputs.title.value);
         empty = false;
@@ -187,7 +193,6 @@ const EditPost = () => {
                 type="text"
                 label="Title"
                 validators={[VALIDATOR_REQUIRE()]}
-                errorText="Please enter a valid title."
                 onInput={inputHandler}
                 initialValue={post.title}
                 initialValid={true}
@@ -196,7 +201,6 @@ const EditPost = () => {
             <Editor
               id="content"
               validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
-              errorText="Please enter valid content (at least 5 characters)."
               onInput={inputHandler}
               editValue={post.content}
               editValid={true}
@@ -221,9 +225,16 @@ const EditPost = () => {
               initialValid={true}
             />
             <div className="blog-form__submit">
-              <Button type="submit" disabled={!formState.isValid}>
-                EDIT
-              </Button>
+              {post.draft && (
+                <Button
+                  type="submit"
+                  onClick={() => setIsDraft(false)}
+                  disabled={!formState.isValid}
+                >
+                  PUBLISH
+                </Button>
+              )}
+              <Button type="submit">SAVE</Button>
               <Button danger onClick={deleteBlogHandler}>
                 DELETE
               </Button>
