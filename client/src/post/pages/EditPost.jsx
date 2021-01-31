@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { Redirect, useParams } from "react-router-dom";
 import {
@@ -28,6 +28,15 @@ const EditPost = () => {
   const { isLoading, error, sendRequest } = useHttpClient();
 
   const slug = useParams().slug;
+
+  const getAuth = useCallback(() => {
+    if (auth.token) {
+      return {
+        Authorization: "Bearer " + auth.token,
+      };
+    }
+    return {};
+  }, [auth.token]);
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -75,7 +84,10 @@ const EditPost = () => {
     const fetchInfo = async () => {
       try {
         const postData = await sendRequest(
-          `${process.env.REACT_APP_API_URL}/post/${slug}`
+          `${process.env.REACT_APP_API_URL}/post/${slug}`,
+          "GET",
+          null,
+          getAuth()
         );
         setPost(postData);
         setIsDraft(postData.draft);

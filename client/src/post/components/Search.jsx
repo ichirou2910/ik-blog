@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import PostList from "../../post/components/PostList";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
@@ -12,16 +13,31 @@ const Search = ({ initialQuery }) => {
   const [query, setQuery] = useState(initialQuery || "");
   const [isTouched, setIsTouched] = useState(false);
 
+  const auth = useContext(AuthContext);
+
   const { isLoading, sendRequest } = useHttpClient();
+
+  const getAuth = useCallback(() => {
+    if (auth.token) {
+      return {
+        Authorization: "Bearer " + auth.token,
+      };
+    }
+    return {};
+  }, [auth.token]);
 
   useEffect(() => {
     const initialFetch = async () => {
       try {
         if (initialQuery) {
           const postData = await sendRequest(
-            `${
-              process.env.REACT_APP_API_URL
-            }/post/search?q=${initialQuery.replace("#", "%23")}`
+            `${process.env.REACT_APP_API_URL}/post?q=${initialQuery.replace(
+              "#",
+              "%23"
+            )}`,
+            "GET",
+            null,
+            getAuth()
           );
           setPosts(postData);
         }
@@ -38,7 +54,10 @@ const Search = ({ initialQuery }) => {
         console.log("Touched fetch");
         try {
           const postData = await sendRequest(
-            `${process.env.REACT_APP_API_URL}/post/search?q=${query}`
+            `${process.env.REACT_APP_API_URL}/post?q=${query}`,
+            "GET",
+            null,
+            getAuth()
           );
           setPosts(postData);
         } catch (err) {

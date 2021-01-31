@@ -64,7 +64,7 @@ const App = () => {
         <Route path="/" exact>
           <MainPage />
         </Route>
-        <Route path="/admin" exact>
+        <Route path="/stupidadmin" exact>
           <Auth />
         </Route>
         <Route path="/about" exact>

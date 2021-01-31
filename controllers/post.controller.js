@@ -28,9 +28,12 @@ const getAll = async (req, res, next) => {
 };
 
 const getBySlug = async (req, res, next) => {
+  let filter = { slug: req.params.slug };
+  if (!req.userData.name) filter["draft"] = false;
+
   let post;
   try {
-    post = await Post.findOne({ slug: req.params.slug });
+    post = await Post.findOne(filter);
   } catch (err) {
     res.status(500).json({ message: "Fetch failed" });
     return next(err);
@@ -44,9 +47,12 @@ const getBySlug = async (req, res, next) => {
 };
 
 const getByTag = async (req, res, next) => {
+  let filter = { tags: req.params.tag };
+  if (!req.userData.name) filter["draft"] = false;
+
   let post;
   try {
-    post = await Post.find({ tags: req.params.tag });
+    post = await Post.find(filter);
   } catch (err) {
     res.status(500).json({ message: "Fetch failed" });
     return next(err);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -8,6 +8,7 @@ import PostPreview from "../components/PostPreview";
 import Tags from "../components/Tags";
 import StickyIcon from "../../shared/components/UIElements/StickyIcon";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import NoPage from "../../shared/pages/NoPage";
 
 import "./PostPage.css";
 
@@ -19,11 +20,23 @@ const PostPage = () => {
   const auth = useContext(AuthContext);
   const slug = useParams().slug;
 
+  const getAuth = useCallback(() => {
+    if (auth.token) {
+      return {
+        Authorization: "Bearer " + auth.token,
+      };
+    }
+    return {};
+  }, [auth.token]);
+
   useEffect(() => {
     const fetchInfo = async () => {
       try {
         const blogData = await sendRequest(
-          `${process.env.REACT_APP_API_URL}/post/${slug}`
+          `${process.env.REACT_APP_API_URL}/post/${slug}`,
+          "GET",
+          null,
+          getAuth()
         );
         setPost(blogData);
       } catch (err) {
@@ -49,7 +62,7 @@ const PostPage = () => {
       )}
       <div className="post-page">
         {isLoading && <LoadingSpinner asOverlay />}
-        {error && <p>{error}</p>}
+        {error && <NoPage error={error} />}
         {!isLoading && auth.isLoggedIn && post && (
           <StickyIcon
             src={`${process.env.REACT_APP_HOST_URL}/uploads/images/edit-post.png`}
