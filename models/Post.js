@@ -26,10 +26,11 @@ const PostSchema = new mongoose.Schema({
     required: false,
   },
   tags: { type: Array, required: false },
+  views: { type: Number, required: false },
   date: { type: Date, required: true },
   displayDate: { type: String, required: true },
 });
 
-const Post = mongoose.model("Blog", PostSchema);
+const Post = mongoose.model("Post", PostSchema);
 
 module.exports = Post;
