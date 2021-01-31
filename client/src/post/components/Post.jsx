@@ -3,6 +3,8 @@ import React from "react";
 import Tags from "../components/Tags";
 import Card from "../../shared/components/UIElements/Card";
 
+import { FaEye, FaCalendarAlt } from "react-icons/fa";
+
 import "./Post.css";
 
 const Post = ({ post }) => {
@@ -25,12 +27,18 @@ const Post = ({ post }) => {
           </a>
         )}
         <div className="post__info">
-          {!post.preview && <Tags tags={post.tags} />}
+          {!post.preview && (
+            <div className="post__tags">
+              <Tags tags={post.tags} />
+            </div>
+          )}
           <h2 className="post__title">
             <a href={`/post/${post.slug}`}>{post.title}</a>
           </h2>
-          <p className="post__date">
-            {post.date.substr(0, post.date.indexOf(","))}
+          <p className="post__stat">
+            <FaCalendarAlt />{" "}
+            {post.displayDate.substr(0, post.displayDate.indexOf(","))}{" "}
+            <FaEye /> {post.views}
           </p>
         </div>
       </Card>

@@ -39,7 +39,7 @@
   flex-grow: 1;
 }
 
-.post__info p {
+.post__tags {
   font-size: 90%;
 }
 
@@ -48,7 +48,6 @@
   font-size: 1.7rem;
   color: var(--text);
   margin: 0.5rem 0;
-  flex-grow: 1;
   line-height: 1.15;
   text-rendering: optimizeLegibility;
   z-index: 2;
@@ -56,6 +55,18 @@
 
 .post__title a {
   color: var(--text);
+}
+
+.post__stat {
+  font-size: 100%;
+}
+
+.post__stat svg {
+  vertical-align: -10%;
+}
+
+.post__stat svg:not(:first-child) {
+  margin-left: 0.5rem;
 }
 
 .post__draft--cut {
@@ -105,7 +116,7 @@
     padding: 0;
   }
 
-  .post__date {
+  .post__stat {
     margin: 0;
   }
 }
