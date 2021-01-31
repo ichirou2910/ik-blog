@@ -26,7 +26,7 @@ const PostSchema = new mongoose.Schema({
     required: false,
   },
   tags: { type: Array, required: false },
-  views: { type: Number, required: false },
+  views: { type: Number, required: true },
   date: { type: Date, required: true },
   displayDate: { type: String, required: true },
 });

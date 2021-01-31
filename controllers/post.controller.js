@@ -43,6 +43,16 @@ const getBySlug = async (req, res, next) => {
     return;
   }
 
+  if (!req.userData.name) {
+    post.views++;
+    try {
+      await post.save();
+    } catch (err) {
+      res.status(500).json({ message: "Update failed" });
+      return next(err);
+    }
+  }
+
   res.json(post);
 };
 
@@ -80,6 +90,7 @@ const create = async (req, res, next) => {
     title: req.body.title,
     slug: req.body.slug,
     tags: tags,
+    views: 0,
     content: req.body.content,
     date: Date.parse(req.body.date),
     displayDate: req.body.displayDate,
