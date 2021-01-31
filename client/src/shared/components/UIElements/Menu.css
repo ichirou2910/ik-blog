@@ -4,6 +4,7 @@
   height: 60px;
   bottom: 40px;
   right: 20px;
+  border: var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
