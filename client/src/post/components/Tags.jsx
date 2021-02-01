@@ -10,15 +10,20 @@ const searchModalStyle = {
   top: "5rem",
 };
 
+const tagStyle = {
+  marginRight: "0.5rem",
+  cursor: "pointer",
+};
+
 const Tag = ({ tag, toggle }) => {
   return (
-    <span style={{ marginRight: "0.5rem", cursor: "pointer" }} onClick={toggle}>
+    <span style={tagStyle} onClick={toggle}>
       #{tag}
     </span>
   );
 };
 
-const Tags = (props) => {
+const Tags = ({ tags }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [selectedTag, setSelectedTag] = useState("");
 
@@ -35,16 +40,22 @@ const Tags = (props) => {
         <Search initialQuery={selectedTag} exit={() => setShowSearch(false)} />
       </Modal>
       <p className="tags">
-        {props.tags.map((item, index) => (
-          <Tag
-            key={index}
-            tag={item}
-            toggle={() => {
-              setSelectedTag(`#${item}`);
-              setShowSearch(true);
-            }}
-          />
-        ))}
+        {tags.length === 1 && tags[0] === "" ? (
+          <span style={tagStyle}>(untagged)</span>
+        ) : (
+          <>
+            {tags.map((item, index) => (
+              <Tag
+                key={index}
+                tag={item}
+                toggle={() => {
+                  setSelectedTag(`#${item}`);
+                  setShowSearch(true);
+                }}
+              />
+            ))}
+          </>
+        )}
       </p>
     </>
   );

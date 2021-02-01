@@ -2,5 +2,9 @@
   margin-top: 0.5rem;
   margin-bottom: 0;
   text-transform: uppercase;
-  color: var(--accent-color);
+  color: var(--blue);
+}
+
+.tags span:hover {
+  color: var(--light-blue);
 }
