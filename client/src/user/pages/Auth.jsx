@@ -63,7 +63,7 @@ const Auth = () => {
       <Helmet>
         <title>Admin - IK's Blog</title>
       </Helmet>
-      <Card className="authentication card--lighter">
+      <Card className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
         <h2>Authenticate</h2>
         <hr />
