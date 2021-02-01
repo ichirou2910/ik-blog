@@ -93,7 +93,8 @@ const create = async (req, res, next) => {
     views: 0,
     content: req.body.content,
     date: Date.parse(req.body.date),
-    displayDate: req.body.displayDate,
+    createdDate: req.body.createdDate,
+    modifiedDate: req.body.createdDate,
   });
 
   if (req.file) {
@@ -148,8 +149,15 @@ const update = async (req, res, next) => {
     post.tags = req.body.tags.split(" ");
   }
 
-  post.date = req.body.date;
-  post.displayDate = req.body.displayDate;
+  if (req.body.createdDate) {
+    post.createdDate = req.body.createdDate;
+  }
+  if (req.body.date) {
+    post.date = req.body.date;
+  }
+  if (req.body.modifiedDate) {
+    post.modifiedDate = req.body.modifiedDate;
+  }
 
   // Delete old images and replace with new ones (if needed)
   if (req.file) {
@@ -161,6 +169,7 @@ const update = async (req, res, next) => {
   try {
     await post.save();
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Update failed" });
     return next(err);
   }

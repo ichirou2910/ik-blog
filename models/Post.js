@@ -28,7 +28,8 @@ const PostSchema = new mongoose.Schema({
   tags: { type: Array, required: false },
   views: { type: Number, required: true },
   date: { type: Date, required: true },
-  displayDate: { type: String, required: true },
+  createdDate: { type: String, required: true },
+  modifiedDate: { type: String, required: true },
 });
 
 const Post = mongoose.model("Post", PostSchema);

@@ -92,7 +92,7 @@ const NewPost = () => {
       formData.append("tags", formState.inputs.tags.value);
       formData.append("cover", formState.inputs.cover.value);
       formData.append("date", _date);
-      formData.append("displayDate", _display);
+      formData.append("createdDate", _display);
 
       sendRequest(
         `${process.env.REACT_APP_API_URL}/post/create`,
