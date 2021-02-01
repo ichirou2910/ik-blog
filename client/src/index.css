@@ -91,11 +91,11 @@ code {
 
 a {
   text-decoration: none;
-  color: var(--accent-color);
+  color: var(--blue);
 }
 
-a:visited {
-  color: var(--accent-color);
+a:hover {
+  color: var(--light-blue);
 }
 
 ::-webkit-scrollbar {
