@@ -37,7 +37,7 @@ const Post = ({ post }) => {
           </h2>
           <p className="post__stat">
             <FaCalendarAlt />{" "}
-            {post.displayDate.substr(0, post.displayDate.indexOf(","))}{" "}
+            {post.createdDate.substr(0, post.createdDate.indexOf(","))}{" "}
             <FaEye /> {post.views}
           </p>
         </div>

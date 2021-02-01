@@ -39,7 +39,9 @@ const PostList = (props) => {
       ) : (
         <>
           {props.preview
-            ? posts.map((post, index) => <Post preview post={post} />)
+            ? posts.map((post, index) => (
+                <Post preview key={index} post={post} />
+              ))
             : posts.map((post, index) => <Post key={index} post={post} />)}
           {props.posts.length > itemsPerPage && (
             <div className="post-list__navi">

@@ -44,7 +44,7 @@ const PostPage = () => {
       }
     };
     fetchInfo();
-  }, [sendRequest, slug]);
+  }, [sendRequest, getAuth, slug]);
 
   return (
     <>
@@ -82,7 +82,10 @@ const PostPage = () => {
                       <strong>(Draft Preview)</strong>
                     </h3>
                   ) : (
-                    <p>Last modified: {post.displayDate}</p>
+                    <>
+                      <p>Created: {post.createdDate}</p>
+                      <p>Last modified: {post.modifiedDate}</p>
+                    </>
                   )}
                 </section>
                 <h2>{post.title}</h2>

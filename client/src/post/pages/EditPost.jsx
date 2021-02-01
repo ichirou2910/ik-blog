@@ -96,7 +96,7 @@ const EditPost = () => {
       }
     };
     fetchInfo();
-  }, [sendRequest, slug]);
+  }, [sendRequest, getAuth, slug]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -132,11 +132,17 @@ const EditPost = () => {
         formData.append("cover", formState.inputs.cover.value);
       }
 
-      formData.append("date", _date);
-      formData.append("displayDate", _display);
-
       if (!empty) {
         // Only send edit request if any field changed
+
+        // Draft to Publish
+        if (post.draft !== isDraft) {
+          formData.append("createdDate", _display);
+          formData.append("date", _date);
+        }
+
+        formData.append("modifiedDate", _display);
+
         sendRequest(
           `${process.env.REACT_APP_API_URL}/post/${slug}`,
           "POST",

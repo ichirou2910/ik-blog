@@ -46,7 +46,7 @@ const Search = ({ initialQuery }) => {
       }
     };
     initialFetch();
-  }, [sendRequest, initialQuery]);
+  }, [sendRequest, getAuth, initialQuery]);
 
   useEffect(() => {
     const typingTimeout = setTimeout(async () => {
@@ -66,7 +66,7 @@ const Search = ({ initialQuery }) => {
       }
     }, 1000);
     return () => clearTimeout(typingTimeout);
-  }, [sendRequest, isTouched, query]);
+  }, [sendRequest, getAuth, isTouched, query]);
 
   const queryInputHandler = (e) => {
     setQuery(e.target.value);
