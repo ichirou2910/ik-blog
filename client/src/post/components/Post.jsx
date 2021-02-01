@@ -7,9 +7,9 @@ import { FaEye, FaCalendarAlt } from "react-icons/fa";
 
 import "./Post.css";
 
-const Post = ({ post }) => {
+const Post = ({ post, preview }) => {
   return (
-    <article className={`${!post.preview ? "post" : "post--preview"}`}>
+    <article className={`post ${!preview ? "" : "post--preview"}`}>
       {post.draft && (
         <>
           <div className="post__draft">
@@ -17,8 +17,8 @@ const Post = ({ post }) => {
           </div>
         </>
       )}
-      <Card className="post__card card--lighter">
-        {!post.preview && (
+      <Card className="post__card ">
+        {!preview && (
           <a className="post__image" href={`/post/${post.slug}`}>
             <img
               src={`${process.env.REACT_APP_HOST_URL}/${post.cover}`}

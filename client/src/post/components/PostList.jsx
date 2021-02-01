@@ -35,7 +35,7 @@ const PostList = (props) => {
   return (
     <div className={`post-list ${props.preview ? "post-list--preview" : ""}`}>
       {!props.posts || props.posts.length === 0 ? (
-        <p className="post-list__empty">Empty</p>
+        <p className="post-list__empty text-center">Empty</p>
       ) : (
         <>
           {props.preview

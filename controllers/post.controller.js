@@ -103,8 +103,6 @@ const create = async (req, res, next) => {
     post.cover = "uploads/images/post-no-image.png";
   }
 
-  console.log(post);
-
   try {
     await post.save();
   } catch (err) {

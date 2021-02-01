@@ -133,6 +133,10 @@ a:hover {
   color: #dc3545;
 }
 
+.text-center {
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .base-view {
     width: 90%;
