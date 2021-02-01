@@ -1,10 +1,10 @@
 .post {
-  margin: 0 20px 50px;
+  margin: 0 10px 50px;
   position: relative;
 }
 
 .post--preview {
-  margin: 0 0 20px;
+  margin: 0 10px 10px;
 }
 
 .post a {
@@ -15,8 +15,11 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  /* height: 10rem; */
   font-weight: 300;
+}
+
+.post--preview .post__card {
+  padding: 0.5rem;
 }
 
 .post__image {
@@ -29,6 +32,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: calc(var(--border-radius) * 0.5);
 }
 
 .post__info {
@@ -53,6 +57,11 @@
   z-index: 2;
 }
 
+.post--preview .post__title {
+  font-size: 1.4rem;
+  margin: 0.3rem 0;
+}
+
 .post__title a {
   color: var(--text);
 }
@@ -67,6 +76,10 @@
 
 .post__stat svg:not(:first-child) {
   margin-left: 0.5rem;
+}
+
+.post--preview .post__stat {
+  margin: 5px 0;
 }
 
 .post__draft--cut {
