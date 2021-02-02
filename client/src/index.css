@@ -38,6 +38,7 @@
   --bg-preview: var(--gray5);
   --bg-modal: var(--gray7);
   --bg-input: var(--gray5);
+  --spinner: var(--gray1);
   --text: var(--white);
   --text-invert: var(--black);
 
@@ -54,6 +55,7 @@
   --bg-preview: var(--gray1);
   --bg-modal: var(--gray0);
   --bg-input: var(--gray1);
+  --spinner: var(--gray7);
   --text: var(--black);
   --text-invert: var(--white);
 
@@ -105,6 +107,7 @@ a:hover {
   width: 10px;
   height: 18px;
 }
+
 ::-webkit-scrollbar-thumb {
   height: 6px;
   border: 3px solid rgba(0, 0, 0, 0);
@@ -117,11 +120,13 @@ a:hover {
   -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
     inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
+
 ::-webkit-scrollbar-button {
   width: 0;
   height: 0;
   display: none;
 }
+
 ::-webkit-scrollbar-corner {
   background-color: transparent;
 }

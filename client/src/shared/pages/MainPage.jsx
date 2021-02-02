@@ -45,7 +45,7 @@ const MainPage = () => {
     <>
       <Helmet>
         <title>IK's Blog - Main Page</title>
-        <meta name="og:title" content="IK's Blog - Main Page" />
+        <meta name="og:title" content="Main Page - IK's Blog" />
         <meta
           name="og:image"
           content={`${process.env.REACT_APP_API_URL}/uploads/images/ik-blog.png`}
