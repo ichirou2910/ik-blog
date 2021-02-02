@@ -85,7 +85,11 @@ const Search = ({ initialQuery }) => {
         value={query}
         onChange={queryInputHandler}
       />
-      {isLoading && <LoadingSpinner />}
+      {isLoading && (
+        <div className="search__spinner">
+          <LoadingSpinner />
+        </div>
+      )}
       {!isLoading && (
         <div className="search__result">
           <PostList preview posts={posts} />

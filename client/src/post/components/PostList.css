@@ -9,6 +9,7 @@
 
 .post-list--preview {
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .post-list__empty {

@@ -8,7 +8,6 @@
   --disabled: #979797;
   --light-disabled: #ccc;
 
-  --blue: #03a9f4;
   --light-blue: #4ec2f7;
 
   --green: #00796b;
@@ -39,22 +38,28 @@
   --bg-preview: var(--gray5);
   --bg-modal: var(--gray7);
   --bg-input: var(--gray5);
+  --spinner: var(--gray1);
   --text: var(--white);
   --text-invert: var(--black);
+
+  --blue: #04a9f4;
 }
 
 .light {
   background-color: var(--gray0);
   --bg: var(--gray0);
   --bg-accent: var(--gray2);
-  --bg-nav: var(--gray2);
+  --bg-nav: var(--gray1);
   --bg-card: var(--gray1);
   --bg-post: var(--gray0);
-  --bg-preview: var(--gray2);
+  --bg-preview: var(--gray1);
   --bg-modal: var(--gray0);
   --bg-input: var(--gray1);
+  --spinner: var(--gray7);
   --text: var(--black);
   --text-invert: var(--white);
+
+  --blue: #0287c3;
 }
 
 * {
@@ -102,6 +107,7 @@ a:hover {
   width: 10px;
   height: 18px;
 }
+
 ::-webkit-scrollbar-thumb {
   height: 6px;
   border: 3px solid rgba(0, 0, 0, 0);
@@ -114,11 +120,13 @@ a:hover {
   -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
     inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
+
 ::-webkit-scrollbar-button {
   width: 0;
   height: 0;
   display: none;
 }
+
 ::-webkit-scrollbar-corner {
   background-color: transparent;
 }

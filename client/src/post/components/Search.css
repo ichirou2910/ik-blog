@@ -33,7 +33,13 @@
 .search__input:focus {
   color: black;
   outline: none;
-  background: var(--gray3);
+  background: var(--gray2);
+}
+
+.search__spinner {
+  position: absolute;
+  top: 4rem;
+  width: 100%;
 }
 
 .search__result {
