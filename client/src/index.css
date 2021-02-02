@@ -8,7 +8,6 @@
   --disabled: #979797;
   --light-disabled: #ccc;
 
-  --blue: #03a9f4;
   --light-blue: #4ec2f7;
 
   --green: #00796b;
@@ -41,20 +40,24 @@
   --bg-input: var(--gray5);
   --text: var(--white);
   --text-invert: var(--black);
+
+  --blue: #04a9f4;
 }
 
 .light {
   background-color: var(--gray0);
   --bg: var(--gray0);
   --bg-accent: var(--gray2);
-  --bg-nav: var(--gray2);
+  --bg-nav: var(--gray1);
   --bg-card: var(--gray1);
   --bg-post: var(--gray0);
-  --bg-preview: var(--gray2);
+  --bg-preview: var(--gray1);
   --bg-modal: var(--gray0);
   --bg-input: var(--gray1);
   --text: var(--black);
   --text-invert: var(--white);
+
+  --blue: #0287c3;
 }
 
 * {
