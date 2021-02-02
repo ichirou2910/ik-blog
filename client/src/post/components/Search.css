@@ -36,6 +36,12 @@
   background: var(--gray2);
 }
 
+.search__spinner {
+  position: absolute;
+  top: 4rem;
+  width: 100%;
+}
+
 .search__result {
   position: absolute;
   top: 4rem;
