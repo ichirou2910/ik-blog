@@ -16,7 +16,7 @@
 }
 
 .tab-menu > button.focus {
-  background-color: var(--accent-color);
+  background-color: var(--blue);
   color: var(--text);
   pointer-events: none;
 }
