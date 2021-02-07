@@ -97,6 +97,12 @@ const create = async (req, res, next) => {
     modifiedDate: req.body.createdDate,
   });
 
+  let imagesUsed = post.content.match(/uploads\/images\/[A-za-z0-9-]*\.png/g);
+
+  post.imagesUsed = imagesUsed;
+
+  // console.log(imagesUsed);
+
   if (req.file) {
     post.cover = req.file.path;
   } else {
@@ -163,6 +169,12 @@ const update = async (req, res, next) => {
       fs.unlink(post.cover, (err) => console.log(err));
     post.cover = req.file ? req.file.path : "";
   }
+
+  let imagesUsed = post.content.match(/uploads\/images\/[A-za-z0-9-]*\.png/g);
+
+  post.imagesUsed = imagesUsed;
+
+  // console.log(imagesUsed);
 
   try {
     await post.save();

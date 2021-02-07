@@ -25,6 +25,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  imagesUsed: {
+    type: Array,
+    required: false,
+  },
   tags: { type: Array, required: false },
   views: { type: Number, required: true },
   date: { type: Date, required: true },

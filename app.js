@@ -4,7 +4,9 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const cron = require("node-cron");
 require("dotenv").config();
+const imageCleanup = require("./middleware/image-cleanup");
 
 const app = express();
 
@@ -13,6 +15,9 @@ app.use(cors());
 
 // Bodyparser
 app.use(bodyParser.json());
+
+// Monthly cron job to cleanup unused images
+cron.schedule("0 0 1 * *", imageCleanup);
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
 app.use(express.static(path.join(__dirname, "client", "build")));
